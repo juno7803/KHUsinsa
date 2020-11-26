@@ -14,6 +14,7 @@ router.post('/signin', UserController.signin);
     REQUEST BODY : ⭐️image file ⭐️
     RESPONSE DATA : user profile
 */
+// checkToken middleware를 거쳐서 token이 유효한지 확인(로그인 이후엔 계속)
 router.post('/profile', AuthMiddleware.checkToken, UserController.updateProfile);
 
 module.exports = router;
