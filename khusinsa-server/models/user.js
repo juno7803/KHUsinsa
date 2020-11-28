@@ -75,6 +75,17 @@ const user = {
             throw err;
         }
     },
+    deleteCloth: async (userIdx,clothIdx) => {
+        let query = `DELETE FROM ${clothTable} WHERE userIdx=${userIdx} and clothIdx=${clothIdx}`;
+        try{
+            await pool.queryParam(query);
+            query = `SELECT * FROM ${clothTable} WHERE userIdx=${userIdx}`;
+            return await queryParam(query);
+        }catch(err){
+            console.log('deleteCloth err : ',err);
+            throw err;
+        }
+    },
     // updateProfile: async (userIdx, profile) => {
     //     let query = `UPDATE ${table} SET image="${profile}" WHERE userIdx="${userIdx}"`;
     //     try {

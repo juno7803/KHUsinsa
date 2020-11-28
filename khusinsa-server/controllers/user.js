@@ -76,7 +76,8 @@ module.exports = {
             }));
     },
     getClothAll: async(req,res) =>{
-        const userIdx = req.params.id; // url의 id를 가져옴
+        // const userIdx = req.params.id; // url의 id를 가져옴
+        const { userIdx } = req.body;
         const cloth = await UserModel.getClothAll(userIdx); // url에 적힌 유저가 가진 옷들 조회
         if(!cloth){
             return res.status(statusCode.BAD_REQUEST)
@@ -93,10 +94,24 @@ module.exports = {
         if(!cloth){
             return res.status(statusCode.BAD_REQUEST)
                 .send(util.fail(statusCode.BAD_REQUEST, responseMessage.UPDATE_CLOTH_FAIL));
-        }else{
-            return res.status(statusCode.OK)
-                .send(util.success(statusCode.OK,responseMessage.UPDATE_CLOTH_SUCCESS,cloth));
         }
+        return res.status(statusCode.OK)
+            .send(util.success(statusCode.OK,responseMessage.UPDATE_CLOTH_SUCCESS,cloth));
+    },
+    deleteCloth: async(req,res) => {
+        // const userIdx = req.params.id;
+        const { userIdx, clothIdx } = req.body;
+        const cloth = await UserModel.deleteCloth(userIdx, clothIdx);
+        if(!clothIdx){
+            return res.status(statusCode.BAD_REQUEST)
+                .send(util.fail(statusCode.BAD_REQUEST,responseMessage.NULL_VALUE));
+        }
+        if(!cloth){
+            return res.status(statusCode.BAD_REQUEST)
+                .send(util.fail(statusCode.BAD_REQUEST, responseMessage.DELETE_CLOTH_FAIL));
+        }
+        return res.status(statusCode.OK)
+            .send(util.success(statusCode.OK,responseMessage.DELETE_CLOTH_SUCCESS));
     },
     updateProfile: async (req, res) => {
         // 데이터 받아오기

@@ -32,5 +32,9 @@ module.exports = {
     UPDATE_CLOTH_SUCCESS: '옷 정보 수정 성공',
     UPDATE_CLOTH_FAIL: '옷 정보 수정 실패',
 
+    // 옷 삭제
+    DELETE_CLOTH_SUCCESS: '옷 삭제 성공',
+    DELETE_CLOTH_FAIL: '옷 삭제 실패',
+
     DB_ERROR: 'DB 오류'
 };
