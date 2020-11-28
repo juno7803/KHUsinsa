@@ -6,6 +6,7 @@ const AuthMiddleware = require('../middlewares/auth');
 router.post('/signup', UserController.signup);
 router.post('/signin', UserController.signin);
 router.get('/cloth/:id',UserController.getClothAll);
+router.put('/cloth/:id',UserController.updateClothPrice);
 
 /* 
     ✔️ update profile

@@ -28,5 +28,9 @@ module.exports = {
     READ_CLOTH_SUCCESS: '옷 정보 조회 성공',
     READ_CLOTH_FAIL: '옷 정보 조회 실패', 
 
+    // 옷 수정
+    UPDATE_CLOTH_SUCCESS: '옷 정보 수정 성공',
+    UPDATE_CLOTH_FAIL: '옷 정보 수정 실패',
+
     DB_ERROR: 'DB 오류'
 };

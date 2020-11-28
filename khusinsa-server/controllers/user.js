@@ -86,6 +86,18 @@ module.exports = {
                 .send(util.success(statusCode.OK,responseMessage.READ_CLOTH_SUCCESS,cloth));
         }
     },
+    updateClothPrice: async(req, res) => { // 업데이트지만, 가격 수정만 가능
+        const userIdx = req.params.id;
+        const { price,clothIdx } = req.body;
+        const cloth = await UserModel.updateClothPrice(userIdx,clothIdx,price); // body로 넣어 보낸 price로 수정
+        if(!cloth){
+            return res.status(statusCode.BAD_REQUEST)
+                .send(util.fail(statusCode.BAD_REQUEST, responseMessage.UPDATE_CLOTH_FAIL));
+        }else{
+            return res.status(statusCode.OK)
+                .send(util.success(statusCode.OK,responseMessage.UPDATE_CLOTH_SUCCESS,cloth));
+        }
+    },
     updateProfile: async (req, res) => {
         // 데이터 받아오기
         // data check - undefined

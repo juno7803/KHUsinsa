@@ -1,3 +1,4 @@
+const { queryParam } = require('../modules/pool');
 const pool = require('../modules/pool');
 const table = 'user';
 const clothTable = 'cloth';
@@ -60,6 +61,17 @@ const user = {
             return await pool.queryParam(query);
         } catch(err){
             console.log('getClothAll err : ', err);
+            throw err;
+        }
+    },
+    updateClothPrice: async (userIdx,clothIdx,price) => {
+        let query = `UPDATE ${clothTable} SET price=${price}  WHERE userIdx=${userIdx} and clothIdx=${clothIdx}`;
+        try{
+            await pool.queryParam(query);
+            query = `SELECT * FROM ${clothTable} WHERE userIdx=${userIdx} and clothIdx=${clothIdx}`;
+            return await pool.queryParam(query);
+        }catch(err){
+            console.log('updateClothPrice err : ', err);
             throw err;
         }
     },
