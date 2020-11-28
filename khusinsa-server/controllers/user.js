@@ -4,6 +4,8 @@ const CODE = require('../modules/statusCode');
 const MSG = require('../modules/responseMessage');
 const encrypt = require('../modules/crypto');
 const jwt = require('../modules/jwt');
+const statusCode = require('../modules/statusCode');
+const responseMessage = require('../modules/responseMessage');
 
 module.exports = {
     signup: async (req, res) => {
@@ -72,6 +74,16 @@ module.exports = {
                 accessToken: token
                 //, refreshToken: refreshToken
             }));
+    },
+    getClothAll: async(req,res) =>{
+        const cloth = await UserModle.getClothAll();
+        if(!cloth){
+            return res.status(statusCode.BAD_REQUEST)
+                .send(util.fail(statusCode.BAD_REQUEST,responseMessage.READ_CLOTH_FAIL));
+        }else{
+            return res.status(statusCode.OK)
+                .send(util.success(statusCode.OK,responseMessage.READ_CLOTH_SUCCESS,cloth));
+        }
     },
     updateProfile: async (req, res) => {
         // 데이터 받아오기

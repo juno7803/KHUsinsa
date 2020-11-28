@@ -1,5 +1,6 @@
 const pool = require('../modules/pool');
 const table = 'user';
+const clothTable = 'cloth';
 
 const user = {
     signup: async (id, name, password, salt) => {
@@ -53,18 +54,27 @@ const user = {
             throw err;
         }
     },
-    updateProfile: async (userIdx, profile) => {
-        let query = `UPDATE ${table} SET image="${profile}" WHERE userIdx="${userIdx}"`;
-        try {
-            await pool.queryParam(query);
-            query = `SELECT id, name, image FROM ${table} WHERE userIdx="${userIdx}"`;
-            const result = await pool.queryParam(query);
-            return result;
-        } catch (err) {
-            console.log('update profile ERROR : ', err);
+    getClothAll: async (userIdx)=>{
+        const query = `SELECT * FROM ${clothTable} WHERE userIdx=${userIdx}`;
+        try{
+            return await pool.queryParam(query);
+        } catch(err){
+            console.log('getClothAll err : ', err);
             throw err;
         }
-    }
+    },
+    // updateProfile: async (userIdx, profile) => {
+    //     let query = `UPDATE ${table} SET image="${profile}" WHERE userIdx="${userIdx}"`;
+    //     try {
+    //         await pool.queryParam(query);
+    //         query = `SELECT id, name, image FROM ${table} WHERE userIdx="${userIdx}"`;
+    //         const result = await pool.queryParam(query);
+    //         return result;
+    //     } catch (err) {
+    //         console.log('update profile ERROR : ', err);
+    //         throw err;
+    //     }
+    // }
 }
 
 module.exports = user;
