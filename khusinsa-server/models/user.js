@@ -66,6 +66,15 @@ const user = {
             throw err;
         }
     },
+    getClothById: async (id) => {
+        const query = `SELECT * FROM ${clothTable} WHERE clothIdx=${id}`;
+        try{
+            return await pool.queryParam(query);
+        }catch(err){
+            console.log('getClothById err : ', err);
+            throw err;
+        }
+    },
     updateClothPrice: async (userIdx,clothIdx,price) => {
         let query = `UPDATE ${clothTable} SET price=${price}  WHERE userIdx=${userIdx} and clothIdx=${clothIdx}`;
         try{
