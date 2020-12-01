@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var {createProxyMiddleware} = require('http-proxy-middleware');
 
 var indexRouter = require('./routes/index');
 
@@ -35,5 +36,14 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+// 로컬에서 api 사용시 cors 문제 해결(proxy)
+// app.use(
+//   '/',
+//   createProxyMiddleware({
+//     target: 'http://localhost:8000',
+//     changeOrigin: true,
+//   })
+// );
 
 module.exports = app;

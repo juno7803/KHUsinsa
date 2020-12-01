@@ -5,9 +5,9 @@ const AuthMiddleware = require('../middlewares/auth');
 
 router.post('/signup', UserController.signup);
 router.post('/signin', UserController.signin);
-router.get('/cloth', AuthMiddleware.checkToken, UserController.getClothAll);
-router.put('/cloth/:id',UserController.updateClothPrice);
-router.delete('/cloth',AuthMiddleware.checkToken,UserController.deleteCloth);
+router.get('/cloth', UserController.getClothAll);
+router.put('/cloth/:id', UserController.updateClothPrice);
+router.delete('/cloth', UserController.deleteCloth);
 
 /* 
     ✔️ update profile

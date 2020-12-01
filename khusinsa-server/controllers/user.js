@@ -77,8 +77,9 @@ module.exports = {
     },
     getClothAll: async(req,res) =>{
         // const userIdx = req.params.id; // url의 id를 가져옴
-        const { userIdx } = req.body;
-        const cloth = await UserModel.getClothAll(userIdx); // url에 적힌 유저가 가진 옷들 조회
+        // const { userIdx } = req.body;
+        // const cloth = await UserModel.getClothAll(userIdx); // url에 적힌 유저가 가진 옷들 조회
+        const cloth = await UserModel.getClothAll();
         if(!cloth){
             return res.status(statusCode.BAD_REQUEST)
                 .send(util.fail(statusCode.BAD_REQUEST,responseMessage.READ_CLOTH_FAIL));
