@@ -26,7 +26,8 @@ function MemberList({ history, match }) {
     }, []);
     const createCard = async () => {
         try{
-            const nextIdx = clothsState.cloths.length+1;
+            const lastCloth = clothsState.cloths[clothsState.cloths.length-1];
+            const nextIdx = lastCloth.clothIdx+1;
             const result = await api.createCloths({
                 clothIdx: nextIdx,
                 name: "",

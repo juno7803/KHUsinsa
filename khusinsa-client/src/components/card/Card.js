@@ -8,8 +8,8 @@ function Card({ clothData, history, onRemove}) {
         console.log('remove');
         evt.stopPropagation();
         try{
-            await api.deleteMember(clothData.id);
-            onRemove(clothData.id);
+            await api.deleteCloths(clothData.clothIdx);
+            onRemove(clothData.clothIdx);
         }catch(e){
             console.log(e);
         }
