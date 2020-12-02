@@ -96,13 +96,13 @@ module.exports = {
                 .send(util.fail(statusCode.BAD_REQUEST,responseMessage.READ_CLOTH_FAIL));
         }else{
             return res.status(statusCode.OK)
-                .send(util.success(statusCode.OK,responseMessage.READ_CLOTH_SUCCESS,cloth));
+                .send(util.success(statusCode.OK,responseMessage.READ_CLOTH_SUCCESS,cloth[0]));
         }
     },
-    updateClothPrice: async(req, res) => { // 업데이트지만, 가격 수정만 가능
-        const userIdx = req.params.id;
-        const { price,clothIdx } = req.body;
-        const cloth = await UserModel.updateClothPrice(userIdx,clothIdx,price); // body로 넣어 보낸 price로 수정
+    updateCloth: async(req, res) => { 
+        const clothIdx = req.params.id;
+        const { name,brand,category,price,image } = req.body;
+        const cloth = await UserModel.updateCloth(clothIdx,name,brand,category,price,image); // body로 넣어 보낸 price로 수정
         if(!cloth){
             return res.status(statusCode.BAD_REQUEST)
                 .send(util.fail(statusCode.BAD_REQUEST, responseMessage.UPDATE_CLOTH_FAIL));

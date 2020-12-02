@@ -7,7 +7,7 @@ router.post('/signup', UserController.signup);
 router.post('/signin', UserController.signin);
 router.get('/cloth', UserController.getClothAll);
 router.get('/cloth/:id',UserController.getClothById);
-router.put('/cloth/:id', UserController.updateClothPrice);
+router.put('/cloth/:id', UserController.updateCloth);
 router.delete('/cloth', UserController.deleteCloth);
 
 /* 
