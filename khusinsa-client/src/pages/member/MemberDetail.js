@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 
 import Button from '../../components/button/Button';
 import Loading from '../../components/loading/Loading';
-import api from '../../lib/api/memberAPI';
+import api from '../../lib/api/clothAPI';
 
 import { InstagramOutlined, AlignLeftOutlined, RadarChartOutlined } from '@ant-design/icons';
 
@@ -49,11 +49,11 @@ function MemberDetail({ match }) {
                 ...clothsState.cloths,
                 [name]: value
             }
-            await api.updateMember(match.params.id,cloths);
             setClothsState({
                 status: 'resolved',
                 cloths
             });
+            await api.updateCloths(match.params.id,cloths);
         }catch(e){
             setClothsState({
                 status: 'rejected',
@@ -62,7 +62,7 @@ function MemberDetail({ match }) {
                 }
             });
         }
-     //   console.log(evt);
+       console.log(evt);
     }
 
     const memberElement = () => (
@@ -75,18 +75,18 @@ function MemberDetail({ match }) {
             <hr style={{borderTop: "solid 1px #eee", marginBottom: "24px"}}/>
             <div className="member-detail__content">
                 <div className="content-title"><InstagramOutlined />&nbsp; 브랜드</div>
-                <input className="content-input" name="instagram" value={clothsState.cloths.brand} onChange={onChangeInputs}/>
+                <input className="content-input" name="brand" value={clothsState.cloths.brand} onChange={onChangeInputs}/>
             </div>
             <div className="member-detail__content">
                 <div className="content-title"><AlignLeftOutlined />&nbsp; 카테고리</div>
-                <input className="content-input" name="introduction" value={clothsState.cloths.category} onChange={onChangeInputs}/>
+                <input className="content-input" name="category" value={clothsState.cloths.category} onChange={onChangeInputs}/>
             </div>
             <div className="member-detail__content">
                 <div className="content-title"><RadarChartOutlined />&nbsp; 가격</div>
-                <input className="content-input" name="mbti" value={clothsState.cloths.price} onChange={onChangeInputs}/>
+                <input className="content-input" name="price" value={clothsState.cloths.price} onChange={onChangeInputs}/>
             </div>
             <div className="member-detail__content">
-                { clothsState.cloths.image !== '' ? <img className="content-image" src={clothsState.cloths.image} alt={'profile url'} /> : '' }
+                { clothsState.cloths.image !== '' ? <img className="content-image" src={clothsState.cloths.image} alt={'product image'} /> : '' }
             </div>
         </div>
     );

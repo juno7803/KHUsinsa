@@ -1,7 +1,7 @@
 import './Card.scss';
 import { DeleteOutlined, FileImageOutlined } from '@ant-design/icons';
 import {withRouter} from 'react-router-dom';
-import api from '../../lib/api/memberAPI';
+import api from '../../lib/api/clothAPI';
 
 function Card({ clothData, history, onRemove}) {
     const removeCard = async (evt) => {

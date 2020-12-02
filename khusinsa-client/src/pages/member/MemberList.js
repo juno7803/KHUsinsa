@@ -4,7 +4,7 @@ import Card from '../../components/card/Card';
 import { useEffect, useState } from 'react';
 import Loading from '../../components/loading/Loading';
 
-import api from '../../lib/api/memberAPI';
+import api from '../../lib/api/clothAPI';
 
 function MemberList({ history, match }) {
     const [ clothsState, setClothsState ] = useState({
@@ -18,7 +18,7 @@ function MemberList({ history, match }) {
             try {
                 const result = await api.getClothsAPI();
                 console.log(result);
-                setTimeout(() => setClothsState({ cloths: result, status: 'resolved' }), 800);
+                setTimeout(() => setClothsState({ cloths: result, status: 'resolved' }), 100);
             } catch (e) {
                 setClothsState({ cloths: null, status: 'rejected' });
             }
@@ -26,19 +26,22 @@ function MemberList({ history, match }) {
     }, []);
     const createCard = async () => {
         try{
-            const result = await api.createMember({
+            const nextIdx = clothsState.cloths.length+1;
+            const result = await api.createCloths({
+                clothIdx: nextIdx,
                 name: "",
-                image: "",
                 brand: "",
                 category: "",
-                price: ""
+                price: 0,
+                image: "",
             });
             setClothsState({
                 cloths: [...clothsState.cloths, result], // spread 문법으로 서버 통신에 보낸 member(body) 추가
                 status: 'resolved'
-            })
+            });
         } catch (e){
-            // fail
+            console.log("createCard err : ",e);
+            throw e;
         }
     }
 

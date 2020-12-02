@@ -25,35 +25,35 @@ const getClothsById = async (id) => {
   }
 };
 
-const updateMember = async (id, member) => {
+const updateCloths = async (id, cloths) => {
   // body가 들어가야 함
   try {
-    const { data } = await axios.put(`${url}/${id}`, member);
-    console.log("[SUCCESS] UPDATE MEMBER", data);
+    const { data } = await axios.put(`${url}/${id}`, cloths);
+    console.log("[SUCCESS] UPDATE CLOTHS", data);
     return data.data;
   } catch (e) {
-    console.error("[FAIL] UPDATE MEMBER", e);
+    console.error("[FAIL] UPDATE C₩LOTHS", e);
     throw e;
   }
 };
 
-const createMember = async (member) => {
+const createCloths = async (member) => {
   try {
     const { data } = await axios.post(`${url}`, member);
     return data.data;
   } catch (e) {
-    console.error("[FAIL] CREATE MEMBER", e);
+    console.error("[FAIL] CREATE CLOTHS", e);
     throw e;
   }
 };
 
-const deleteMember = async (id) => {
+const deleteCloths = async (id) => {
   try {
     const { data } = await axios.delete(`${url}/${id}`);
-    console.log("[SUCCESS] DELETE MEMBER", data);
+    console.log("[SUCCESS] DELETE CLOTHS", data);
     return data.data;
   } catch (e) {
-    console.error("[FAIL] DELETE MEMBER", e);
+    console.error("[FAIL] DELETE CLOTHS", e);
     throw e;
   }
 };
@@ -61,9 +61,9 @@ const deleteMember = async (id) => {
 const api = {
   getClothsAPI,
   getClothsById,
-  updateMember,
-  createMember,
-  deleteMember,
+  updateCloths,
+  createCloths,
+  deleteCloths,
 };
 
 export default api;
