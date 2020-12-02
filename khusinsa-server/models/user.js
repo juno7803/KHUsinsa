@@ -74,6 +74,20 @@ const user = {
             throw err;
         }
     },
+    createCloth: async (clothIdx, name, brand, category, price, image)=>{
+        const fields = 'clothIdx, name, brand, category, price, image';
+        const questions = `?, ?, ?, ?, ?, ?`;
+        const values = [clothIdx, name, brand, category, price, image];
+        let query = `INSERT INTO ${clothTable}(${fields}) VALUES(${questions})`;
+        try{
+            await pool.queryParamArr(query, values);
+            query = `SELECT * FROM ${clothTable} WHERE clothIdx=${clothIdx}`;
+            return await pool.queryParam(query);
+        }catch(err){
+            console.log('createCloth err : ',err);
+            throw err;
+        }
+    },
     updateCloth: async (clothIdx, name, brand, category, price, image) => {
         const columns = `name=?, brand=?, category=?, price=?, image=?`;
         const values = [name, brand, category, price, image];

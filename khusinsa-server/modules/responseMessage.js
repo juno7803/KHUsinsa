@@ -24,6 +24,10 @@ module.exports = {
     READ_PROFILE_SUCCESS: '프로필 조회 성공',
     UNSUPPORTED_TYPE: '지원하지 않는 타입입니다.',
 
+    // 옷 추가
+    CREATE_CLOTH_SUCCESS: '옷 추가 성공',
+    CREATE_CLOTH_FAIL: '옷 추가 실패',
+
     // 옷 조회
     READ_CLOTH_SUCCESS: '옷 정보 조회 성공',
     READ_CLOTH_FAIL: '옷 정보 조회 실패', 
