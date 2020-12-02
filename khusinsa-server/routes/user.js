@@ -9,7 +9,7 @@ router.get('/cloth', UserController.getClothAll);
 router.get('/cloth/:id',UserController.getClothById);
 router.post('/cloth',UserController.createCloth);
 router.put('/cloth/:id', UserController.updateCloth);
-router.delete('/cloth', UserController.deleteCloth);
+router.delete('/cloth/:id', UserController.deleteCloth);
 
 /* 
     ✔️ update profile

@@ -101,12 +101,12 @@ const user = {
             throw err;
         }
     },
-    deleteCloth: async (userIdx,clothIdx) => {
-        let query = `DELETE FROM ${clothTable} WHERE userIdx=${userIdx} and clothIdx=${clothIdx}`;
+    deleteCloth: async (clothIdx) => {
+        let query = `DELETE FROM ${clothTable} WHERE clothIdx=${clothIdx}`;
         try{
             await pool.queryParam(query);
-            query = `SELECT * FROM ${clothTable} WHERE userIdx=${userIdx}`;
-            return await queryParam(query);
+            query = `SELECT * FROM ${clothTable}`;
+            return await pool.queryParam(query);
         }catch(err){
             console.log('deleteCloth err : ',err);
             throw err;

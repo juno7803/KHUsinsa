@@ -122,9 +122,8 @@ module.exports = {
             .send(util.success(statusCode.OK, responseMessage.CREATE_CLOTH_SUCCESS,newCloth[0]));
     },
     deleteCloth: async(req,res) => {
-        // const userIdx = req.params.id;
-        const { userIdx, clothIdx } = req.body;
-        const cloth = await UserModel.deleteCloth(userIdx, clothIdx);
+        const clothIdx = req.params.id;
+        const cloth = await UserModel.deleteCloth(clothIdx);
         if(!clothIdx){
             return res.status(statusCode.BAD_REQUEST)
                 .send(util.fail(statusCode.BAD_REQUEST,responseMessage.NULL_VALUE));
@@ -134,6 +133,6 @@ module.exports = {
                 .send(util.fail(statusCode.BAD_REQUEST, responseMessage.DELETE_CLOTH_FAIL));
         }
         return res.status(statusCode.OK)
-            .send(util.success(statusCode.OK,responseMessage.DELETE_CLOTH_SUCCESS));
+            .send(util.success(statusCode.OK,responseMessage.DELETE_CLOTH_SUCCESS,cloth));
     }
 }
