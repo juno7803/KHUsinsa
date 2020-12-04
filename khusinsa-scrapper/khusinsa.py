@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import csv
 
 URL = f"https://search.musinsa.com/ranking/best"
 PRODURL = f"https://store.musinsa.com/app/goods"
@@ -24,7 +25,7 @@ def extract_musinsa(input_page,startIdx,endIdx):
     prod_img = soup.find_all("div",{"class":"list_img"})
     prod_brand = soup.find_all("p",{"class":"item_title"})
     prod_name = soup.find_all("p",{"class":"list_info"})
-    prod_price = soup.find_all("p",{"class":"price"})
+    prod_price = soup.find_all("p",{"class":"price"},)
 
     nameList = [] # 상품 이름
     brandList = [] # 브랜드 명
@@ -45,22 +46,29 @@ def extract_musinsa(input_page,startIdx,endIdx):
             priceList.append(price.find("del").string)
         else: # 할인 안하는 상품
             priceList.append(price.string.strip())
+            
 
     nameList = nameList[startIdx:endIdx]
     brandList = brandList[startIdx:endIdx]
     imgList = imgList[startIdx:endIdx]
     priceList = priceList[startIdx:endIdx]
 
-    result=[] # 내가 원하는 최종 결과
+    cloths=[] # 내가 원하는 최종 결과
     for i in range(endIdx-startIdx):
-        result.append({
+        cloths.append({
             'name' : nameList[i],
             'brand' : brandList[i],
             'category' : categoryList[i],
             'price' : priceList[i],
             'image' : imgList[i]
         })
-    print(result)
+    print(cloths)
+
+    file = open("khusinsa.csv", mode="w")
+    writer = csv.writer(file)
+    writer.writerow(["name","brand","category","price","image"])
+    for cloth in cloths:
+        writer.writerow(list(cloth.values()))
 
 while(True):
     print("크롤링 하고 싶은 페이지를 입력 해 주세요(1~100) : ")
