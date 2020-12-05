@@ -28,14 +28,15 @@ function MemberList({ history, match }) {
         try{
             const lastCloth = clothsState.cloths[clothsState.cloths.length-1];
             const nextIdx = lastCloth.clothIdx+1;
-            const result = await api.createCloths({
+            const newCloth = {
                 clothIdx: nextIdx,
                 name: "",
                 brand: "",
                 category: "",
                 price: 0,
                 image: "",
-            });
+            }
+            const result = await api.createCloths(newCloth);
             setClothsState({
                 cloths: [...clothsState.cloths, result], // spread 문법으로 서버 통신에 보낸 member(body) 추가
                 status: 'resolved'

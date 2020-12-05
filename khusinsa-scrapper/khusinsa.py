@@ -43,9 +43,10 @@ def extract_musinsa(input_page,startIdx,endIdx):
 
     for price in prod_price:
         if price.find("del")is not None: # 할인 하는 상품
-            priceList.append(price.find("del").string)
+            priceList.append(int(price.find("del").string[0:-1].replace(",",""))) 
+            # 200,000원 에서 "," 를 "" 으로 바꾸고, [0:-1]로 "원"을 자른 뒤 int로 형 변환
         else: # 할인 안하는 상품
-            priceList.append(price.string.strip())
+            priceList.append(int(price.string.strip()[0:-1].replace(",","")))
             
 
     nameList = nameList[startIdx:endIdx]
@@ -64,11 +65,13 @@ def extract_musinsa(input_page,startIdx,endIdx):
         })
     print(cloths)
 
+# csv 파일로 저장하는 코드
     file = open("khusinsa.csv", mode="w")
     writer = csv.writer(file)
     writer.writerow(["name","brand","category","price","image"])
     for cloth in cloths:
         writer.writerow(list(cloth.values()))
+    print("csv 파일 생성이 완료되었습니다.")
 
 while(True):
     print("크롤링 하고 싶은 페이지를 입력 해 주세요(1~100) : ")

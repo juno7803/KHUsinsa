@@ -8,6 +8,15 @@ import api from '../../lib/api/clothAPI';
 
 import { InstagramOutlined, AlignLeftOutlined, RadarChartOutlined } from '@ant-design/icons';
 
+import styled from 'styled-components';
+
+const ImgBtn = styled.input`
+`;
+
+const SubmitBtn = styled.button`
+    
+`;
+
 function MemberDetail({ match }) {
     const [clothsState, setClothsState] = useState({
         status: 'idle',
@@ -65,11 +74,20 @@ function MemberDetail({ match }) {
        console.log(evt);
     }
 
+    const onChange = (e) => {
+        console.log(e.target.files);
+    }
+
     const memberElement = () => (
         <div className="member-detail">
             <div className="member-detail__button-area">
                 <Button text="Add icon"></Button>
                 <Button text="Add cover"></Button>
+                <ImgBtn
+                    type="file"
+                    onChange={onChange}
+                />
+                <SubmitBtn>제출</SubmitBtn>
             </div>
             <input className="member-detail__content name" name="name" value={clothsState.cloths.name} onChange={onChangeInputs}/>
             <hr style={{borderTop: "solid 1px #eee", marginBottom: "24px"}}/>
