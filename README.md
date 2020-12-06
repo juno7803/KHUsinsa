@@ -98,7 +98,7 @@
 ![생성된 csv 파일](https://khusinsa.s3.amazonaws.com/%E1%84%8F%E1%85%AE%E1%84%89%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A1/csv%E1%84%91%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%AF.png)
 
 **데이터베이스 데이터 삽입**
-![db에 데이터 삽입](https://khusinsa.s3.amazonaws.com/%E1%84%8F%E1%85%AE%E1%84%89%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A1/%E1%84%8F%E1%85%AE%E1%84%89%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A1+%E1%84%83%E1%85%B5%E1%84%87%E1%85%B5+csv.gif)
+![db에 데이터 삽입](https://khusinsa.s3.amazonaws.com/%E1%84%8F%E1%85%AE%E1%84%89%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A1/new/%E1%84%8F%E1%85%AE%E1%84%89%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A1+%E1%84%83%E1%85%B5%E1%84%87%E1%85%B5+import.gif)
 - workbench에서 데이터를 추가할 테이블을 우클릭 후 "Table data Import Wizard" 를 통해 csv 파일을 db에 삽입할 수 있습니다.
 
 **웹 페이지**
@@ -114,7 +114,7 @@
 
 **데이터 수정**
 - `PUT` 을 이용한 통신
-![쿠신사 U](https://khusinsa.s3.amazonaws.com/%E1%84%8F%E1%85%AE%E1%84%89%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A1/new/%E1%84%8F%E1%85%AE%E1%84%89%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A1+U.gif)
+![쿠신사 U](https://khusinsa.s3.amazonaws.com/%E1%84%8F%E1%85%AE%E1%84%89%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A1/new/%E1%84%8F%E1%85%AE%E1%84%89%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A1U+%E1%84%8C%E1%85%A5%E1%84%8B%E1%85%AD%E1%86%BC%E1%84%85%E1%85%A3%E1%86%BC.gif)
 
 **데이터 삭제**
 - `DELETE` 를 이용한 통신
