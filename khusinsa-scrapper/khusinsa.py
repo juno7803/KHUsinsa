@@ -66,7 +66,7 @@ def extract_musinsa(input_page,startIdx,endIdx):
     print(cloths)
 
 # csv 파일로 저장하는 코드
-    file = open("khusinsa.csv", mode="w")
+    file = open("./khusinsa.csv", mode="w")
     writer = csv.writer(file)
     writer.writerow(["name","brand","category","price","image"])
     for cloth in cloths:
