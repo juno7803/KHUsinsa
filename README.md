@@ -1,7 +1,6 @@
 # 👔 KHUSINSA
 
 **KHUSINSA : 쇼핑몰 재고 관리 서비스**
-> for 2020-2 web/python programming
 
 본 서비스는 쇼핑몰 재고 관리를 위한 KHUSINSA 입니다!   
 웹으로 구현하였으며, `python`을 이용하여 크롤링 하여 초기 데이터를 쌓을 수 있습니다.   
